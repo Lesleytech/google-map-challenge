@@ -132,7 +132,7 @@ function createMarker(latlng, name, address, openStatus, phone, index) {
     map: map,
     position: latlng,
     label: index.toString(),
-    icon: "../marker.png"
+    icon: "https://github.com/Lesleytech/google-map-challenge/blob/master/marker.png?raw=true"
   });
   google.maps.event.addListener(marker, "click", function () {
     infoWindow.setContent(html);
