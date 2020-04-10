@@ -1,6 +1,4 @@
-window.onload = () => {
-
-};
+window.onload = () => {};
 
 var map;
 var markers = [];
@@ -16,17 +14,19 @@ function initMap(style) {
     center: losAngeles,
     zoom: 11,
     mapTypeId: "roadmap",
-    styles: style
+    styles: style,
   });
   infoWindow = new google.maps.InfoWindow();
   searchStores();
 }
 
 function searchStores() {
-  var zipCode = document.getElementById('zip-code-input').value;
+  var zipCode = document.getElementById("zip-code-input").value;
   var foundStores = [];
   if (zipCode.length > 4) {
-    foundStores = stores.filter(store => store.address.postalCode.substring(0, 5) == zipCode);
+    foundStores = stores.filter(
+      (store) => store.address.postalCode.substring(0, 5) == zipCode
+    );
   }
   if (foundStores.length == 0) {
     foundStores = stores;
@@ -48,20 +48,16 @@ function clearLocations() {
 function setOnClickListener() {
   var storeElements = document.querySelectorAll(".store-container");
   storeElements.forEach((storeElement, index) => {
-    storeElement.addEventListener('click', () => {
-      google.maps.event.trigger(markers[index], 'click');
-    })
-  })
-};
+    storeElement.addEventListener("click", () => {
+      google.maps.event.trigger(markers[index], "click");
+    });
+  });
+}
 
 function displayStores(stores) {
   var storesHtml = "";
   stores.forEach((store, index) => {
-    var {
-      addressLines: address,
-      phoneNumber: phone,
-      name
-    } = store;
+    var { addressLines: address, phoneNumber: phone, name } = store;
     storesHtml += `
             <div class="store-container">
               <div class="store-container-background">
@@ -132,7 +128,8 @@ function createMarker(latlng, name, address, openStatus, phone, index) {
     map: map,
     position: latlng,
     label: index.toString(),
-    icon: "../marker.png",
+    icon:
+      "https://github.com/Lesleytech/google-map-challenge/blob/master/marker.png?raw=true",
   });
   google.maps.event.addListener(marker, "click", function () {
     infoWindow.setContent(html);
@@ -168,7 +165,8 @@ function openMarker(lat, lng, index, name, openStatus, address) {
     map: map,
     position: latlng,
     label: index.toString(),
-    icon: "../marker.png"
+    icon:
+      "https://github.com/Lesleytech/google-map-challenge/blob/master/marker.png?raw=true",
   });
   infoWindow.setContent(html);
   infoWindow.open(map, marker);
@@ -177,136 +175,175 @@ function openMarker(lat, lng, index, name, openStatus, address) {
 //Change theme
 function changeTheme() {
   var checked = document.getElementById("theme-toggle").checked;
-  var style = [{
+  var style = [
+    {
       elementType: "geometry",
-      stylers: [{
-        color: "#242f3e",
-      }, ],
+      stylers: [
+        {
+          color: "#242f3e",
+        },
+      ],
     },
     {
       elementType: "labels.text.stroke",
-      stylers: [{
-        color: "#242f3e",
-      }, ],
+      stylers: [
+        {
+          color: "#242f3e",
+        },
+      ],
     },
     {
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#746855",
-      }, ],
+      stylers: [
+        {
+          color: "#746855",
+        },
+      ],
     },
     {
       featureType: "administrative.locality",
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#d59563",
-      }, ],
+      stylers: [
+        {
+          color: "#d59563",
+        },
+      ],
     },
     {
       featureType: "poi",
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#d59563",
-      }, ],
+      stylers: [
+        {
+          color: "#d59563",
+        },
+      ],
     },
     {
       featureType: "poi.park",
       elementType: "geometry",
-      stylers: [{
-        color: "#263c3f",
-      }, ],
+      stylers: [
+        {
+          color: "#263c3f",
+        },
+      ],
     },
     {
       featureType: "poi.park",
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#6b9a76",
-      }, ],
+      stylers: [
+        {
+          color: "#6b9a76",
+        },
+      ],
     },
     {
       featureType: "road",
       elementType: "geometry",
-      stylers: [{
-        color: "#38414e",
-      }, ],
+      stylers: [
+        {
+          color: "#38414e",
+        },
+      ],
     },
     {
       featureType: "road",
       elementType: "geometry.stroke",
-      stylers: [{
-        color: "#212a37",
-      }, ],
+      stylers: [
+        {
+          color: "#212a37",
+        },
+      ],
     },
     {
       featureType: "road",
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#9ca5b3",
-      }, ],
+      stylers: [
+        {
+          color: "#9ca5b3",
+        },
+      ],
     },
     {
       featureType: "road.highway",
       elementType: "geometry",
-      stylers: [{
-        color: "#746855",
-      }, ],
+      stylers: [
+        {
+          color: "#746855",
+        },
+      ],
     },
     {
       featureType: "road.highway",
       elementType: "geometry.stroke",
-      stylers: [{
-        color: "#1f2835",
-      }, ],
+      stylers: [
+        {
+          color: "#1f2835",
+        },
+      ],
     },
     {
       featureType: "road.highway",
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#f3d19c",
-      }, ],
+      stylers: [
+        {
+          color: "#f3d19c",
+        },
+      ],
     },
     {
       featureType: "transit",
       elementType: "geometry",
-      stylers: [{
-        color: "#2f3948",
-      }, ],
+      stylers: [
+        {
+          color: "#2f3948",
+        },
+      ],
     },
     {
       featureType: "transit.station",
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#d59563",
-      }, ],
+      stylers: [
+        {
+          color: "#d59563",
+        },
+      ],
     },
     {
       featureType: "water",
       elementType: "geometry",
-      stylers: [{
-        color: "#17263c",
-      }, ],
+      stylers: [
+        {
+          color: "#17263c",
+        },
+      ],
     },
     {
       featureType: "water",
       elementType: "labels.text.fill",
-      stylers: [{
-        color: "#515c6d",
-      }, ],
+      stylers: [
+        {
+          color: "#515c6d",
+        },
+      ],
     },
     {
       featureType: "water",
       elementType: "labels.text.stroke",
-      stylers: [{
-        color: "#17263c",
-      }, ],
+      stylers: [
+        {
+          color: "#17263c",
+        },
+      ],
     },
   ];
 
   if (checked) {
-    document.getElementById("dark-theme-manager").classList.add('dark-theme');
+    document.getElementById("dark-theme-manager").classList.add("dark-theme");
     return initMap(style);
   } else {
-    document.getElementById("dark-theme-manager").classList.remove('dark-theme');
+    document
+      .getElementById("dark-theme-manager")
+      .classList.remove("dark-theme");
     return initMap();
   }
 }
