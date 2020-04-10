@@ -168,7 +168,7 @@ function openMarker(lat, lng, index, name, openStatus, address) {
     map: map,
     position: latlng,
     label: index.toString(),
-    icon: "../marker.png"
+    icon: "https://github.com/Lesleytech/google-map-challenge/blob/master/marker.png?raw=true"
   });
   infoWindow.setContent(html);
   infoWindow.open(map, marker);
