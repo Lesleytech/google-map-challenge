@@ -131,8 +131,7 @@ function createMarker(latlng, name, address, openStatus, phone, index) {
   var marker = new google.maps.Marker({
     map: map,
     position: latlng,
-    label: index.toString(),
-    icon: "https://github.com/Lesleytech/google-map-challenge/blob/master/marker.png?raw=true"
+    label: index.toString()
   });
   google.maps.event.addListener(marker, "click", function () {
     infoWindow.setContent(html);
@@ -168,7 +167,6 @@ function openMarker(lat, lng, index, name, openStatus, address) {
     map: map,
     position: latlng,
     label: index.toString(),
-    icon: "../marker.png"
   });
   infoWindow.setContent(html);
   infoWindow.open(map, marker);
